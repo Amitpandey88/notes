@@ -1,0 +1,70 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.note {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  width: 300px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  max-height: 200px;
+}
+
+.note.minimized {
+  max-height: 70px;
+}
+
+.note h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.note p {
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.note.minimized p {
+  opacity: 0;
+}
+
+.note .delete-note {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.note .edit-note {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.new-note {
+  margin-top: 20px;
+}
