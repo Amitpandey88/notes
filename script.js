@@ -75,3 +75,10 @@ function renderNotes() {
     notesContainer.appendChild(noteElement);
   });
 }
+
+// Save notes to local storage
+localStorage.setItem('notes', notesContent);
+
+// Retrieve notes from local storage
+var notesContent = localStorage.getItem('notes');
+
