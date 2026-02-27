@@ -7,8 +7,11 @@ const notesContainer = document.querySelector('.notes-container');
 // Event listeners
 addNoteButton.addEventListener('click', addNote);
 
-// Notes array to store notes data
-let notes = [];
+// Notes array to store notes data — load from localStorage
+let notes = loadNotes();
+
+// Render any previously saved notes on startup
+renderNotes();
 
 // Add note function
 function addNote() {
@@ -25,8 +28,9 @@ function addNote() {
   // Add new note object to notes array
   notes.push(note);
 
-  // Render notes
+  // Render notes and persist
   renderNotes();
+  saveNotes();
 
   // Clear input fields
   noteTitleInput.value = '';
@@ -55,8 +59,9 @@ function renderNotes() {
     deleteButton.addEventListener('click', () => {
       // Remove note from notes array
       notes.splice(index, 1);
-      // Render notes again
+      // Render notes again and persist
       renderNotes();
+      saveNotes();
     });
 
     // Add event listener to edit note button
@@ -67,8 +72,9 @@ function renderNotes() {
       noteContentInput.value = note.content;
       // Remove note from notes array
       notes.splice(index, 1);
-      // Render notes again
+      // Render notes again and persist
       renderNotes();
+      saveNotes();
     });
 
     // Add note element to notes container
@@ -77,8 +83,20 @@ function renderNotes() {
 }
 
 // Save notes to local storage
-localStorage.setItem('notes', notesContent);
+function saveNotes() {
+  localStorage.setItem('notes', JSON.stringify(notes));
+}
 
-// Retrieve notes from local storage
-var notesContent = localStorage.getItem('notes');
+// Load notes from local storage
+function loadNotes() {
+  try {
+    var data = localStorage.getItem('notes');
+    if (data) {
+      return JSON.parse(data);
+    }
+  } catch (e) {
+    // Ignore corrupt data
+  }
+  return [];
+}
 

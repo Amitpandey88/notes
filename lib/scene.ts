@@ -54,6 +54,9 @@ export function serializeScene(scene: Scene): string {
 }
 
 export function deserializeScene(json: string): Scene {
+  if (!json || typeof json !== 'string' || !json.trim()) {
+    throw new Error('Invalid scene JSON: input is empty or not a string')
+  }
   const parsed = JSON.parse(json) as Scene
   // Basic migration: ensure schemaVersion
   if (!parsed.meta) {
