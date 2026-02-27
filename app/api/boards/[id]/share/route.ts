@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { generateToken, hashToken } from '@/lib/hash'
 
-// Rate limiting (simple in-memory, production should use Redis)
+// Rate limiting (simple in-memory for single-instance deployments).
+// For multi-instance or serverless deployments, replace with a
+// distributed store such as Redis (e.g. via Upstash) before going to production.
 const shareRequestCounts = new Map<string, { count: number; resetAt: number }>()
 
 function checkRateLimit(ip: string): boolean {

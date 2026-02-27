@@ -15,6 +15,8 @@ interface Props {
 }
 
 // Undo/redo history
+// Implements a time-travel pattern: past scenes stack, present scene, future (redo) stack.
+// Each direction is capped at MAX_HISTORY entries to bound memory usage.
 interface HistoryState {
   past: Scene[]
   present: Scene
@@ -479,7 +481,7 @@ export default function CanvasView({ boardId, initialSceneJson, readOnly = false
     setIsDrawing(true)
     setDragStart([cx, cy])
     const newScene = addElement(scene, {
-      type: tool as any,
+      type: tool as import('@/types/scene').ElementType,
       x: cx,
       y: cy,
       width: 0,
