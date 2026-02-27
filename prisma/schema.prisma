@@ -1,0 +1,49 @@
+// This is your Prisma schema file
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  boards    Board[]
+}
+
+model Board {
+  id          String           @id @default(cuid())
+  title       String           @default("Untitled Board")
+  ownerId     String?
+  visibility  String           @default("private")
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  owner       User?            @relation(fields: [ownerId], references: [id])
+  snapshots   BoardSnapshot[]
+  shareTokens BoardShareToken[]
+}
+
+model BoardSnapshot {
+  id        String   @id @default(cuid())
+  boardId   String
+  version   Int      @default(1)
+  sceneJson String
+  createdAt DateTime @default(now())
+  board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+
+  @@index([boardId, version])
+}
+
+model BoardShareToken {
+  id        String    @id @default(cuid())
+  boardId   String
+  mode      String    @default("ro")
+  tokenHash String    @unique
+  createdAt DateTime  @default(now())
+  expiresAt DateTime?
+  board     Board     @relation(fields: [boardId], references: [id], onDelete: Cascade)
+}
