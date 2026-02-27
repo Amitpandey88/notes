@@ -59,6 +59,14 @@ describe('Scene operations', () => {
     expect(restored.meta.schemaVersion).toBe(1)
   })
 
+  test('deserializeScene throws on empty string', () => {
+    expect(() => deserializeScene('')).toThrow('Invalid scene JSON')
+  })
+
+  test('deserializeScene throws on whitespace-only string', () => {
+    expect(() => deserializeScene('   ')).toThrow('Invalid scene JSON')
+  })
+
   test('scene updatedAt is updated on modifications', () => {
     const scene = createEmptyScene()
     const before = scene.meta.updatedAt

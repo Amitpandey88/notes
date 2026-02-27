@@ -1,15 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Notes Application</title>
+  <title>SketchNotes — Free Open-Source Notes &amp; Whiteboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SketchNotes is a free, open-source collaborative whiteboard and notes application with drawing, real-time sharing, and more.">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Notes Application</h1>
+    <!-- Introduction -->
+    <h1>SketchNotes</h1>
+    <p class="flow-text">
+      A <strong>free</strong> and <strong>open-source</strong> collaborative whiteboard and note-taking application.
+      Draw, write, and organize your ideas — right in the browser.
+    </p>
+
+    <!-- Features -->
+    <div class="section">
+      <h4><i class="material-icons left">star</i> Features</h4>
+      <ul class="collection">
+        <li class="collection-item">🎨 Canvas drawing with pen, shapes, lines, arrows, and text</li>
+        <li class="collection-item">🔄 Undo/redo with full history (up to 50 steps)</li>
+        <li class="collection-item">💾 Auto-save to localStorage and manual save to server</li>
+        <li class="collection-item">📤 Export as PNG or SVG</li>
+        <li class="collection-item">🔗 Share boards via read-only or read-write links</li>
+        <li class="collection-item">🔍 Zoom &amp; pan with mouse wheel, pinch, or hand tool</li>
+        <li class="collection-item">📐 Optional grid overlay</li>
+        <li class="collection-item">🗂 Board management — create, rename, duplicate, delete</li>
+        <li class="collection-item">⌨️ Keyboard shortcuts for power users</li>
+        <li class="collection-item">🆓 100% free — no accounts, no limits</li>
+      </ul>
+    </div>
+
+    <!-- Installation -->
+    <div class="section">
+      <h4><i class="material-icons left">get_app</i> Installation</h4>
+      <p>Get started in three easy steps:</p>
+      <pre style="text-align:left; background:#f5f5f5; padding:16px; border-radius:4px;">
+# 1. Clone the repository
+git clone https://github.com/Amitpandey88/notes.git
+cd notes
+
+# 2. Install dependencies
+npm install
+
+# 3. Set up the database and start the dev server
+npx prisma migrate dev --name init
+npm run dev</pre>
+      <p>Then open <a href="http://localhost:3000">http://localhost:3000</a> in your browser.</p>
+    </div>
+
+    <!-- Wiki / Documentation -->
+    <div class="section">
+      <h4><i class="material-icons left">menu_book</i> Wiki &amp; Documentation</h4>
+      <p>
+        Visit the <a href="https://github.com/Amitpandey88/notes/wiki" target="_blank" rel="noopener noreferrer">project wiki</a> for
+        guides, API documentation, keyboard shortcuts, and contribution guidelines.
+      </p>
+    </div>
+
+    <!-- Open Source -->
+    <div class="section">
+      <h4><i class="material-icons left">code</i> Open Source</h4>
+      <p>
+        SketchNotes is released under the <strong>MIT License</strong>.
+        Contributions, issues, and feature requests are welcome!
+        Check the <a href="https://github.com/Amitpandey88/notes" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
+      </p>
+    </div>
+
+    <hr>
+
+    <!-- Quick Notes (existing functionality) -->
+    <h4>Quick Notes</h4>
     <div class="row">
       <form class="col s12">
         <div class="row">
