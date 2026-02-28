@@ -1,103 +1,260 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SketchNotes — Free Open-Source Notes &amp; Whiteboard</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SketchNotes is a free, open-source collaborative whiteboard and notes application with drawing, real-time sharing, and more.">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="style.css">
+  <title>SketchNotes — Free Open-Source Whiteboard &amp; Notes</title>
+  <meta name="description" content="SketchNotes is a free, open-source collaborative whiteboard and note-taking app. Draw, write, organize, export, and share — right in your browser.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SketchNotes — Free Open-Source Whiteboard &amp; Notes">
+  <meta property="og:description" content="A free, open-source collaborative whiteboard and note-taking app — draw, write, organize, export, and share right in your browser.">
+  <meta property="og:url" content="https://amitpandey88.github.io/notes/">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon (uses existing SVG asset) -->
+  <link rel="icon" href="public/file.svg" type="image/svg+xml">
+
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Introduction -->
-    <h1>SketchNotes</h1>
-    <p class="flow-text">
-      A <strong>free</strong> and <strong>open-source</strong> collaborative whiteboard and note-taking application.
-      Draw, write, and organize your ideas — right in the browser.
-    </p>
 
-    <!-- Features -->
-    <div class="section">
-      <h4><i class="material-icons left">star</i> Features</h4>
-      <ul class="collection">
-        <li class="collection-item">🎨 Canvas drawing with pen, shapes, lines, arrows, and text</li>
-        <li class="collection-item">🔄 Undo/redo with full history (up to 50 steps)</li>
-        <li class="collection-item">💾 Auto-save to localStorage and manual save to server</li>
-        <li class="collection-item">📤 Export as PNG or SVG</li>
-        <li class="collection-item">🔗 Share boards via read-only or read-write links</li>
-        <li class="collection-item">🔍 Zoom &amp; pan with mouse wheel, pinch, or hand tool</li>
-        <li class="collection-item">📐 Optional grid overlay</li>
-        <li class="collection-item">🗂 Board management — create, rename, duplicate, delete</li>
-        <li class="collection-item">⌨️ Keyboard shortcuts for power users</li>
-        <li class="collection-item">🆓 100% free — no accounts, no limits</li>
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="wrap">
+      <a href="#" class="navbar__brand" aria-label="SketchNotes home">
+        <!-- pencil icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+        SketchNotes
+      </a>
+
+      <button class="navbar__toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <ul class="navbar__links" id="nav-links" role="menubar">
+        <li role="none"><a href="#features" role="menuitem">Features</a></li>
+        <li role="none"><a href="#how-it-works" role="menuitem">How it works</a></li>
+        <li role="none"><a href="#install" role="menuitem">Install</a></li>
+        <li role="none"><a href="#docs" role="menuitem">Docs</a></li>
+        <li role="none"><a href="#open-source" role="menuitem">Open Source</a></li>
+        <li role="none"><a href="#app" class="navbar__cta" role="menuitem">Open Whiteboard</a></li>
       </ul>
     </div>
+  </nav>
 
-    <!-- Installation -->
-    <div class="section">
-      <h4><i class="material-icons left">get_app</i> Installation</h4>
-      <p>Get started in three easy steps:</p>
-      <pre style="text-align:left; background:#f5f5f5; padding:16px; border-radius:4px;">
-# 1. Clone the repository
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <div class="wrap">
+      <h1>SketchNotes</h1>
+      <p class="hero__tagline">A free, open-source collaborative whiteboard and note-taking app — right in your browser.</p>
+      <p class="hero__desc">Draw with pen &amp; shapes, write text, organize boards, export to PNG or SVG, and share with anyone via a link.</p>
+      <div class="hero__actions">
+        <a href="#app" class="btn btn--primary">Open Whiteboard</a>
+        <a href="https://github.com/Amitpandey88/notes/wiki" target="_blank" rel="noopener noreferrer" class="btn btn--outline">View Documentation</a>
+        <a href="https://github.com/Amitpandey88/notes" target="_blank" rel="noopener noreferrer" class="btn btn--outline">GitHub Repo</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Features ===== -->
+    <section id="features" class="section" aria-labelledby="features-title">
+      <div class="wrap">
+        <h2 id="features-title" class="section__title">Features</h2>
+        <p class="section__subtitle">Everything you need to sketch, plan, and share ideas — no sign-up required.</p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">🎨</div>
+            <h3>Canvas Drawing</h3>
+            <p>Pen, rectangles, ellipses, diamonds, lines, arrows, and text — all on an infinite canvas.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">🔄</div>
+            <h3>Undo / Redo</h3>
+            <p>Full history with up to 50 steps so you can experiment freely.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">📤</div>
+            <h3>Export (PNG / SVG)</h3>
+            <p>Download your boards as high-res PNG (2×, 4×, transparent) or crisp SVG.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">🔗</div>
+            <h3>Sharing</h3>
+            <p>Generate read-only or read-write links to share boards instantly.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">💾</div>
+            <h3>Autosave</h3>
+            <p>Auto-save to localStorage plus manual save to the server — never lose work.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">🔍</div>
+            <h3>Zoom &amp; Pan</h3>
+            <p>Mouse wheel, pinch-to-zoom, or the hand tool for smooth navigation.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">📐</div>
+            <h3>Grid Overlay</h3>
+            <p>Toggle a grid for precise alignment and cleaner diagrams.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">⌨️</div>
+            <h3>Keyboard Shortcuts</h3>
+            <p>Power-user shortcuts for every tool, undo, zoom, save, and more.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">🆓</div>
+            <h3>100% Free</h3>
+            <p>No accounts, no limits, no tracking. Just open and create.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== How It Works ===== -->
+    <section id="how-it-works" class="section" aria-labelledby="hiw-title">
+      <div class="wrap">
+        <h2 id="hiw-title" class="section__title">How It Works</h2>
+        <p class="section__subtitle">Three simple steps — no setup, no sign-up.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step__number" aria-hidden="true">1</div>
+            <h3>Open</h3>
+            <p>Launch the whiteboard in your browser — it works instantly.</p>
+          </div>
+          <div class="step">
+            <div class="step__number" aria-hidden="true">2</div>
+            <h3>Draw</h3>
+            <p>Use the pen, shapes, text, and more to sketch your ideas.</p>
+          </div>
+          <div class="step">
+            <div class="step__number" aria-hidden="true">3</div>
+            <h3>Export or Share</h3>
+            <p>Download as PNG/SVG or share a link with collaborators.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Installation ===== -->
+    <section id="install" class="section" aria-labelledby="install-title">
+      <div class="wrap">
+        <h2 id="install-title" class="section__title">Installation</h2>
+        <p class="section__subtitle">Set up the development environment in four commands.</p>
+
+        <pre class="code-block" role="figure" aria-label="Installation commands"><code><span class="comment"># 1. Clone the repository</span>
 git clone https://github.com/Amitpandey88/notes.git
 cd notes
 
-# 2. Install dependencies
+<span class="comment"># 2. Install dependencies</span>
 npm install
 
-# 3. Set up the database and start the dev server
+<span class="comment"># 3. Run database migrations</span>
 npx prisma migrate dev --name init
-npm run dev</pre>
-      <p>Then open <a href="http://localhost:3000">http://localhost:3000</a> in your browser.</p>
-    </div>
 
-    <!-- Wiki / Documentation -->
-    <div class="section">
-      <h4><i class="material-icons left">menu_book</i> Wiki &amp; Documentation</h4>
-      <p>
-        Visit the <a href="https://github.com/Amitpandey88/notes/wiki" target="_blank" rel="noopener noreferrer">project wiki</a> for
-        guides, API documentation, keyboard shortcuts, and contribution guidelines.
-      </p>
-    </div>
+<span class="comment"># 4. Start the dev server</span>
+npm run dev</code></pre>
+        <p style="text-align:center;margin-top:16px;color:var(--muted);font-size:.9rem;">
+          Then open <a href="http://localhost:3000">http://localhost:3000</a> in your browser.
+        </p>
+      </div>
+    </section>
 
-    <!-- Open Source -->
-    <div class="section">
-      <h4><i class="material-icons left">code</i> Open Source</h4>
-      <p>
-        SketchNotes is released under the <strong>MIT License</strong>.
-        Contributions, issues, and feature requests are welcome!
-        Check the <a href="https://github.com/Amitpandey88/notes" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
-      </p>
-    </div>
-
-    <hr>
-
-    <!-- Quick Notes (existing functionality) -->
-    <h4>Quick Notes</h4>
-    <div class="row">
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="note-title" type="text" class="validate">
-            <label for="note-title">Note Title</label>
-          </div>
-          <div class="input-field col s12">
-            <textarea id="note-content" class="materialize-textarea"></textarea>
-            <label for="note-content">Note Content</label>
-          </div>
+    <!-- ===== Docs ===== -->
+    <section id="docs" class="section" aria-labelledby="docs-title">
+      <div class="wrap">
+        <h2 id="docs-title" class="section__title">Documentation</h2>
+        <div class="docs-card">
+          <h3>📖 Read the Docs</h3>
+          <p>Guides, API reference, keyboard shortcuts, and contribution guidelines — all in the project wiki.</p>
+          <a href="https://github.com/Amitpandey88/notes/wiki" target="_blank" rel="noopener noreferrer" class="btn btn--primary">View Wiki</a>
         </div>
-        <div class="row">
-          <div class="col s12">
-            <a id="add-note-btn" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Add Note</a>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="notes-container"></div>
-  </div>
+      </div>
+    </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="script.js"></script>
+    <!-- ===== Open Source ===== -->
+    <section id="open-source" class="section oss" aria-labelledby="oss-title">
+      <div class="wrap">
+        <h2 id="oss-title" class="section__title">Open Source</h2>
+        <p>SketchNotes is released under the <strong>MIT License</strong>. Contributions, issues, and feature requests are always welcome!</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="https://github.com/Amitpandey88/notes" target="_blank" rel="noopener noreferrer" class="btn btn--outline">GitHub Repository</a>
+          <a href="https://github.com/Amitpandey88/notes/issues" target="_blank" rel="noopener noreferrer" class="btn btn--outline">Report an Issue</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== App / Canvas anchor (existing app entry point) ===== -->
+    <section id="app" class="section" aria-label="Whiteboard application">
+      <div class="wrap" style="text-align:center;">
+        <h2 class="section__title">Whiteboard</h2>
+        <p class="section__subtitle">The full collaborative whiteboard runs at <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer">localhost:3000</a> during development, or via the deployed Next.js app.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Quick Notes Floating Inbox ===== -->
+  <aside class="qn" aria-label="Quick Notes">
+    <button id="qn-fab" class="qn__fab" aria-label="Open Quick Notes" title="Quick Notes">+</button>
+    <div id="qn-panel" class="qn__panel" role="dialog" aria-label="Quick Notes panel">
+      <div class="qn__header">
+        <h3>Quick Notes</h3>
+        <div class="qn__header-actions">
+          <button id="qn-export" title="Export notes as JSON">Export</button>
+          <button id="qn-close" aria-label="Close panel">✕</button>
+        </div>
+      </div>
+      <div class="qn__search">
+        <input id="qn-search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      </div>
+      <div id="qn-list" class="qn__list" role="list"></div>
+      <div class="qn__form">
+        <input id="qn-title" type="text" placeholder="Title" aria-label="Note title">
+        <textarea id="qn-content" placeholder="Content (Ctrl+Enter to add)" aria-label="Note content"></textarea>
+        <button id="qn-add">Add Note</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer__links">
+        <a href="https://github.com/Amitpandey88/notes" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/Amitpandey88/notes/wiki" target="_blank" rel="noopener noreferrer">Docs</a>
+        <a href="https://github.com/Amitpandey88/notes/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">License</a>
+      </div>
+      <p class="footer__copy">&copy; 2025 SketchNotes. MIT License.</p>
+    </div>
+  </footer>
+
+  <!-- Navbar toggle (inline to avoid extra file) -->
+  <script>
+    (function () {
+      var btn = document.getElementById('nav-toggle');
+      var links = document.getElementById('nav-links');
+      btn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+      /* Close menu when a link is clicked (mobile) */
+      links.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          links.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+  <script src="quick-notes.js"></script>
 </body>
 </html>
