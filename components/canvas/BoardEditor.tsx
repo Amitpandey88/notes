@@ -22,7 +22,10 @@ export function BoardEditor({ boardId, readOnly = false }: Props) {
 
   useEffect(() => {
     fetch(`/api/boards/${boardId}`)
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`)
+        return r.json()
+      })
       .then((d) => {
         if (d.error) setError(d.error)
         else setBoard(d)

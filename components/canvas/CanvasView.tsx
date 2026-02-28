@@ -734,6 +734,10 @@ export default function CanvasView({ boardId, initialSceneJson, readOnly = false
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ mode }),
     })
+    if (!res.ok) {
+      console.error(`Failed to create share link for board ${boardId}:`, res.status)
+      return null
+    }
     const data = await res.json()
     const url = `${window.location.origin}/share/${data.token}`
     setShareUrl(url)

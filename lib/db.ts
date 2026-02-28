@@ -7,7 +7,7 @@ const globalForPrisma = globalThis as unknown as {
 
 function createPrismaClient() {
   // Pass the raw DATABASE_URL — the adapter handles the 'file:' prefix itself
-  const url = process.env.DATABASE_URL ?? 'file:./dev.db'
+  const url = process.env.DATABASE_URL ?? 'file:./prisma/dev.db'
   const adapter = new PrismaBetterSqlite3({ url })
   return new PrismaClient({ adapter })
 }

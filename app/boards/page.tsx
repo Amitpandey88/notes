@@ -21,7 +21,15 @@ export default function BoardsPage() {
   const fetchBoards = async (query: string) => {
     try {
       const res = await fetch(`/api/boards?search=${encodeURIComponent(query)}`)
+      if (!res.ok) {
+        console.error('Failed to fetch boards', res.status)
+        return
+      }
       const data = await res.json()
+      if (!Array.isArray(data)) {
+        console.error('Unexpected API response: expected array, got', typeof data)
+        return
+      }
       setBoards(data)
     } catch (e) {
       console.error(e)
@@ -44,6 +52,11 @@ export default function BoardsPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title: 'Untitled Board' }),
       })
+      if (!res.ok) {
+        console.error('Failed to create board', res.status)
+        setCreating(false)
+        return
+      }
       const board = await res.json()
       router.push(`/board/${board.id}`)
     } catch (e) {
@@ -72,6 +85,10 @@ export default function BoardsPage() {
   const duplicateBoard = async (id: string, title: string) => {
     // Get board data
     const res = await fetch(`/api/boards/${id}`)
+    if (!res.ok) {
+      console.error('Failed to fetch board for duplication', res.status)
+      return
+    }
     const board = await res.json()
     const sceneJson = board.snapshots?.[0]?.sceneJson
 
@@ -80,6 +97,10 @@ export default function BoardsPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: `${title} (copy)` }),
     })
+    if (!newRes.ok) {
+      console.error('Failed to create duplicate board', newRes.status)
+      return
+    }
     const newBoard = await newRes.json()
 
     if (sceneJson) {
