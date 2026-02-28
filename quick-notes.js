@@ -3,6 +3,15 @@
   'use strict';
 
   var STORAGE_KEY = 'quick_notes';
+  var _idCounter = 0;
+
+  function generateId() {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+      return crypto.randomUUID();
+    }
+    _idCounter += 1;
+    return Date.now().toString(36) + '-' + _idCounter + '-' + Math.random().toString(36).slice(2, 8);
+  }
 
   function loadNotes() {
     try {
@@ -26,7 +35,7 @@
       var existing = loadNotes();
       var migrated = parsed.map(function (n) {
         return {
-          id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random(),
+          id: generateId(),
           title: n.title || '',
           content: n.content || '',
           timestamp: Date.now()
@@ -75,7 +84,7 @@
     var content = contentInput.value.trim();
     if (!title && !content) return;
     notes.unshift({
-      id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random(),
+      id: generateId(),
       title: title || 'Untitled',
       content: content,
       timestamp: Date.now()
